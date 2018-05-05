@@ -13,9 +13,12 @@ Fork and upload to this repo to generate views of eagle files.
     * use "Upload files" button on github
     * upload both files at the same time as each upload triggers a travis run/build
 4. wait for travis status to finish: [![Build Status](https://travis-ci.org/drtrigon/eagle-viewer-repo.svg?branch=master)](https://travis-ci.org/drtrigon/eagle-viewer-repo)
-5. view and download the results from your repos [result/pcb](tree/result/pcb) branch
-    * overview of output in [README.md](tree/result/pcb/README.md) in result/pcb
+5. view and download the results from your repos [result/pcb](/drtrigon/eagle-viewer-repo/tree/result/pcb) branch
+    * overview of output in [README.md](/drtrigon/eagle-viewer-repo/tree/result/pcb/README.md) in result/pcb
 6. repeat from step 3 for other files
+
+# Alternative Use
+Execute the command given in the travis config file on your local linux (ubuntu, debian) machine.
 
 # see also
 * https://github.com/drtrigon/eagle
