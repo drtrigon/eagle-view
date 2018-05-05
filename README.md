@@ -18,7 +18,7 @@ Fork and upload to this repo to generate views of eagle files.
 6. repeat from step 3 for other files
 
 # Alternative Use
-Execute the command given in the travis config file on your local linux (ubuntu, debian) machine.
+Execute the commands given in the [travis config](.travis.yml) file on your local linux (ubuntu, debian) machine.
 
 # see also
 * https://github.com/drtrigon/eagle
