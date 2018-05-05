@@ -1,5 +1,5 @@
 # eagle-view
-[![Build Status](https://travis-ci.org/drtrigon/eagle-view.svg?branch=test)](https://travis-ci.org/drtrigon/eagle-view)
+[![Build Status](https://travis-ci.org/drtrigon/eagle-view.svg?branch=test)](https://travis-ci.org/drtrigon/eagle-view/branches)
 
 Fork and upload to this repo and use travis to generate views of eagle files.
 
