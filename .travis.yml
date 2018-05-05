@@ -144,4 +144,4 @@ after_success:
   - git config user.email 'travis@travis-ci.org'
   - git config user.name 'Travis CI'
   - git commit --message "Travis build $TRAVIS_BUILD_NUMBER ($TRAVIS_BUILD_ID)"
-  - git push -f https://$GIT_USER:$GIT_PASS@github.com/$GIT_REPO.git result/pcb  # dangerous; overwrite remote branch! if 2 worker pull at the same time the one pushing later survives only!
+  - git push -f https://$GIT_USER:$GIT_PASS@github.com/$GIT_USER/eagle-viewer-repo.git result/pcb  # dangerous; overwrite remote branch! if 2 worker pull at the same time the one pushing later survives only!
