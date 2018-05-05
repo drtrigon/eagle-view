@@ -1,5 +1,5 @@
 # eagle-viewer-repo
-Fork and upload to this repo to generate views of eagle files.
+Fork and upload to this repo and use travis to generate views of eagle files.
 
 # HowTo Use
 1. fork this repo
@@ -22,3 +22,9 @@ Execute the commands given in the [travis config](.travis.yml) file on your loca
 
 # see also
 * https://github.com/drtrigon/eagle
+
+---
+
+eagle-view
+
+stop travis run if no files present
