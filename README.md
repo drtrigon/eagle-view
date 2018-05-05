@@ -24,5 +24,8 @@ Uses eagle 7.7.0 but that can be changed in the config file. KiCAD export can be
 # Alternative Use
 Execute the commands given in the [travis config](.travis.yml) file on your local linux (ubuntu, debian) machine.
 
+# Example Results
+...
+
 # See also
 * https://github.com/drtrigon/eagle (this is the project where the travis conifg / bash script originates from)
