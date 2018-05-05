@@ -17,8 +17,7 @@ Uses eagle 7.7.0 but that can be changed in the config file. KiCAD export can be
     * use "Upload files" button on github
     * upload both files at the same time as each upload triggers a travis run/build
 4. wait for travis status to finish: https://travis-ci.org/[your-user-name]/eagle-view
-5. view and download the results from your repos [result/pcb](/../../tree/result/pcb) branch
-    * overview of output in [README.md](/../../tree/result/pcb/README.md) in result/pcb
+5. view and download the results (as zip file) from your repos [result/pcb](/../../tree/result/pcb) branch
 6. repeat from step 3 for other files
 
 # Alternative Use
