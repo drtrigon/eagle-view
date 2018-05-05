@@ -23,7 +23,6 @@ before_install:
   - BOARD_FILE=`find $PWD -name "*.brd"`
   - BOARD_FILE="${BOARD_FILE%.*}"
   - echo $BOARD_FILE
-  - test "$BOARD_FILE" != ""
   # generate needed list of files
   - BASIC_FILE_LIST="${BOARD_FILE}.cmp ${BOARD_FILE}.sol ${BOARD_FILE}.plc ${BOARD_FILE}.stc ${BOARD_FILE}.sts"
   - FILE_LIST=$BASIC_FILE_LIST
