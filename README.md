@@ -1,7 +1,7 @@
 # eagle-viewer-repo
 Fork and upload to this repo to generate views of eagle files.
 
-## HowTo Use
+# HowTo Use
 1. fork this repo
     * use "Fork" button on github
     * fork it to your private repositories (no organization) - other wise you have to edit the push command at the end of the travis file
