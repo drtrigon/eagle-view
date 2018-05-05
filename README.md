@@ -9,5 +9,9 @@ Fork and upload to this repo to generate views of eagle files.
 5. view and download the results from your repos ... branch
 6. repeat from step 3 for other files
 
+travis status
+
+output to readme.md in .. branch
+
 # see also
 * https://github.com/drtrigon/eagle
