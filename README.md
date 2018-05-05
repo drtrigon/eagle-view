@@ -12,7 +12,7 @@ Uses eagle 7.7.0 but that can be changed in the config file. KiCAD export can be
 2. enable travis CI
     * https://docs.travis-ci.com/user/getting-started#To-get-started-with-Travis-CI
     * on https://travis-ci.org/profile use the "Sync" button to sync to your github account and enable eagle-view repo
-    * in https://travis-ci.org/[your-user-name]/eagle-view/settings set the Environment Variables GIT_USER (your github username) and GIT_PASS (your github password - mark it as hidden!) - see [example](https://travis-ci.org/drtrigon/eagle-view/settings)
+    * in https://travis-ci.org/[your-user-name]/eagle-view/settings set the Environment Variables GIT_USER (your github username) and GIT_PASS (your github password - mark it as hidden!)
 3. upload your eagle files (.sch and .brd) to your fork
     * use "Upload files" button on github
     * upload both files at the same time as each upload triggers a travis run/build
@@ -24,7 +24,7 @@ Uses eagle 7.7.0 but that can be changed in the config file. KiCAD export can be
 Execute the commands given in the [travis config](.travis.yml) file on your local linux (ubuntu, debian) machine.
 
 # Example Results
-As an example we use the Arduino Uno files from https://store.arduino.cc/usa/arduino-uno-rev3 see under Documentation and produce this output ([test](/../../tree/test) branch):
+As an example we use the Arduino Uno files from https://store.arduino.cc/usa/arduino-uno-rev3 see under Documentation and produce this output ([example](/../../tree/example) branch):
 
 ## GERBER files
 [![GERBER files](https://raw.githubusercontent.com/drtrigon/eagle-view/example/arduino_Uno_Rev3-02-TH.zip)](https://github.com/drtrigon/eagle-view/blob/example/arduino_Uno_Rev3-02-TH.zip)
