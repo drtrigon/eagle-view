@@ -16,7 +16,7 @@ env:
     # how to produce gerber files if we need the bottom silkscreen also (bPlace, bNames, bDocu, ...) ?
     - EXCELLON_CAM_FILE=excellon.cam
     - ULP_BOM_FILE=bom.ulp
-    - AUTOROUTER_ENABLE=true
+#    - AUTOROUTER_ENABLE=true
     - KICAD_ENABLE=true
 
 before_install:
