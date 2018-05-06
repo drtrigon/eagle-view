@@ -16,6 +16,7 @@ env:
     # how to produce gerber files if we need the bottom silkscreen also (bPlace, bNames, bDocu, ...) ?
     - EXCELLON_CAM_FILE=excellon.cam
     - ULP_BOM_FILE=bom.ulp
+    - AUTOROUTER_ENABLE=true
     - KICAD_ENABLE=true
 
 before_install:
@@ -113,12 +114,12 @@ script:
   - $EAGLE -C"EDIT ${BOARD_FILE}.brd; EXPORT IMAGE ${BOARD_FILE}_brd.png 300; QUIT;"
   # schematic image output
   - $EAGLE -C"EDIT ${BOARD_FILE}.brd; EDIT ${BOARD_FILE}.sch; EXPORT IMAGE ${BOARD_FILE}_sch.png 300; QUIT;"
-  # auto-router as example
-  - $EAGLE -C"EDIT ${BOARD_FILE}.brd; AUTO; EXPORT IMAGE ${BOARD_FILE}_auto.png 300; UNDO; QUIT;"
   # drc & erc checks (to images - better to logfile, see https://electronics.stackexchange.com/questions/269623/... at top)
   #- $EAGLE -C"EDIT ${BOARD_FILE}.brd; ERC;" & sleep 10; import -window root ${BOARD_FILE}_erc.png; sleep 2; xdotool getwindowfocus getwindowname; xdotool keydown alt key f; xdotool keyup alt; xdotool key x; sleep 5; xwininfo -tree -root; killall eagle || true;
   - $EAGLE -C"EDIT ${BOARD_FILE}.brd; EDIT ${BOARD_FILE}.sch; ERC; ERRORS;" & sleep 10; import -window root ${BOARD_FILE}_erc.png; sleep 2; xdotool getwindowfocus getwindowname; xdotool keydown alt key f; xdotool keyup alt; xdotool key x; sleep 5; xwininfo -tree -root; killall eagle || true;
   - $EAGLE -C"EDIT ${BOARD_FILE}.brd; DRC; ERRORS;" & sleep 10; import -window root ${BOARD_FILE}_drc.png; sleep 2; xdotool getwindowfocus getwindowname; xdotool keydown alt key f; xdotool keyup alt; xdotool key x; sleep 5; xwininfo -tree -root; killall eagle || true;
+  # auto-router as example
+  - test ! $AUTOROUTER_ENABLE || ($EAGLE -C"EDIT ${BOARD_FILE}.brd; AUTO; EXPORT IMAGE ${BOARD_FILE}_auto.png 300; UNDO; QUIT;")
   # eagle to kicad conversion test (no return/error code handling implemented yet) - tested/working with KiCAD 5.0RC2
   - test ! $KICAD_ENABLE || (cp $PWD/${BOARD_FILE}.* $HOME; kicad & sleep 3; xdotool getwindowfocus getwindowname; xdotool keydown alt key f; xdotool keyup alt; xdotool key Down; xdotool key Down; xdotool key Down; xdotool key Right; xdotool key Return; sleep 2; xdotool getwindowfocus getwindowname; xdotool mousemove 420 330 click 1; xdotool key Return; sleep 2; xdotool getwindowfocus getwindowname; xdotool key Return; sleep 2; xdotool getwindowfocus getwindowname; xdotool keydown alt key y; xdotool keyup alt; sleep 10; xdotool getwindowfocus getwindowname; xdotool keydown alt key o; xdotool keyup alt; sleep 10; xdotool getwindowfocus getwindowname; xdotool keydown alt key o; xdotool keyup alt; sleep 10; xdotool getwindowfocus getwindowname; xdotool keydown alt key n; xdotool keyup alt; sleep 2; xdotool getwindowfocus getwindowname; xdotool keydown alt key o; xdotool keyup alt; sleep 3; xdotool getwindowfocus getwindowname; xdotool mousemove 10 10 click 1; xdotool key Up; xdotool key Return; sleep 2; xdotool getwindowfocus getwindowname; xdotool key Return; sleep 5; xdotool getwindowfocus getwindowname; xdotool keydown alt key f; xdotool keyup alt; xdotool key e; sleep 2; xdotool getwindowfocus getwindowname; xdotool key Return; sleep 5; xwininfo -tree -root; killall kicad || true; rm $HOME/${BOARD_FILE_BASE}.*; zip -r $PWD/${BOARD_FILE}_kicad.zip $HOME/$BOARD_FILE_BASE/; rm -rf $HOME/$BOARD_FILE_BASE;);
 
@@ -138,9 +139,10 @@ after_success:
   # push result back to git repo
   - git checkout -b result/pcb ;
   #- git add ${BOARD_FILE}.zip ${BOARD_FILE}.gpi ${BOARD_FILE}.dri ${BOARD_FILE}.txt ${BOARD_FILE}.png
-  - git add ${BOARD_FILE}.zip ${BOARD_FILE}.gpi ${BOARD_FILE}.dri ${BOARD_FILE}.txt ${BOARD_FILE}_brd.png ${BOARD_FILE}_sch.png ${BOARD_FILE}_auto.png ${BOARD_FILE}_erc.png ${BOARD_FILE}_drc.png ${BOARD_FILE}.png ${BOARD_FILE}_top.png ${BOARD_FILE}_btm.png
-  - git add ${BOARD_FILE}_all.png  # not always generated
-  - test ! $KICAD_ENABLE || git add $PWD/${BOARD_FILE}_kicad.zip  # eagle to kicad conversion test
+  - git add ${BOARD_FILE}.zip ${BOARD_FILE}.gpi ${BOARD_FILE}.dri ${BOARD_FILE}.txt ${BOARD_FILE}_brd.png ${BOARD_FILE}_sch.png ${BOARD_FILE}_erc.png ${BOARD_FILE}_drc.png ${BOARD_FILE}.png ${BOARD_FILE}_top.png ${BOARD_FILE}_btm.png
+  - git add ${BOARD_FILE}_auto.png        # not always generated
+  - git add ${BOARD_FILE}_all.png         # not always generated
+  - git add $PWD/${BOARD_FILE}_kicad.zip  # eagle to kicad conversion test
   #- git add screenshot_*.png  # debug screenshoots
   - git status
   - git config user.email 'travis@travis-ci.org'

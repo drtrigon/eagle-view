@@ -54,10 +54,10 @@ As an example we use the Arduino Uno files from https://store.arduino.cc/usa/ard
 
 [![drc](https://raw.githubusercontent.com/drtrigon/eagle-view/example/arduino_Uno_Rev3-02-TH_drc.png)](https://github.com/drtrigon/eagle-view/blob/example/arduino_Uno_Rev3-02-TH_drc.png)
 
-## autorouter
+## autorouter (optional)
 [![autorouter](https://raw.githubusercontent.com/drtrigon/eagle-view/example/arduino_Uno_Rev3-02-TH_auto.png)](https://github.com/drtrigon/eagle-view/blob/example/arduino_Uno_Rev3-02-TH_auto.png)
 
-## KiCAD project import
+## KiCAD project import (optional)
 [![KiCAD project](https://raw.githubusercontent.com/drtrigon/eagle-view/example/arduino_Uno_Rev3-02-TH_kicad.zip)](https://github.com/drtrigon/eagle-view/blob/example/arduino_Uno_Rev3-02-TH_kicad.zip)
 
 # See also
