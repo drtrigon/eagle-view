@@ -145,6 +145,7 @@ after_success:
   - git add ${BOARD_FILE}_all.png         # not always generated
   - git add $PWD/${BOARD_FILE}_kicad.zip  # eagle to kicad conversion test
   #- git add screenshot_*.png  # debug screenshoots
+  - git add screenshot.png  # debug screenshoots
   - git status
   - git config user.email 'travis@travis-ci.org'
   - git config user.name 'Travis CI'
