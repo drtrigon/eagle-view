@@ -122,7 +122,7 @@ script:
   # auto-router as example
   - test ! $AUTOROUTER_ENABLE || ($EAGLE -C"EDIT ${BOARD_FILE}.brd; AUTO; EXPORT IMAGE ${BOARD_FILE}_auto.png 300; UNDO; QUIT;")
   # eagle to kicad conversion test (no return/error code handling implemented yet) - tested/working with KiCAD 5.0RC2
-  - test ! $KICAD_ENABLE || (cp ${BOARD_FILE}.* $HOME; kicad & sleep 3; xdotool getwindowfocus getwindowname; xdotool keydown alt key f; xdotool keyup alt; xdotool key Down; xdotool key Down; xdotool key Down; xdotool key Right; xdotool key Return; sleep 2; xdotool getwindowfocus getwindowname; xdotool mousemove 420 330 click 1; import -window root screenshot_00.png; xdotool key Return; sleep 2; xdotool getwindowfocus getwindowname; xdotool key Return; sleep 2; xdotool getwindowfocus getwindowname; xdotool keydown alt key y; xdotool keyup alt; sleep 10; xdotool getwindowfocus getwindowname; xdotool keydown alt key o; xdotool keyup alt; sleep 10; xdotool getwindowfocus getwindowname; xdotool keydown alt key o; xdotool keyup alt; sleep 10; xdotool getwindowfocus getwindowname; xdotool keydown alt key n; xdotool keyup alt; sleep 2; xdotool getwindowfocus getwindowname; xdotool keydown alt key o; xdotool keyup alt; sleep 3; xdotool getwindowfocus getwindowname; xdotool mousemove 10 10 click 1; xdotool key Up; xdotool key Return; sleep 2; xdotool getwindowfocus getwindowname; xdotool key Return; sleep 5; xdotool getwindowfocus getwindowname; xdotool keydown alt key f; xdotool keyup alt; xdotool key e; sleep 2; xdotool getwindowfocus getwindowname; xdotool key Return; sleep 5; xwininfo -tree -root; import -window root screenshot_99.png; killall kicad || true; rm $HOME/${BOARD_FILE_BASE}.*; zip -r ${BOARD_FILE}_kicad.zip $HOME/$BOARD_FILE_BASE/; rm -rf $HOME/$BOARD_FILE_BASE;);
+  - test ! $KICAD_ENABLE || (cp ${BOARD_FILE}.* $HOME; kicad & sleep 3; xdotool getwindowfocus getwindowname; xdotool keydown alt key f; xdotool keyup alt; xdotool key Down; xdotool key Down; xdotool key Down; xdotool key Right; xdotool key Return; sleep 2; xdotool getwindowfocus getwindowname; xdotool mousemove 420 330 click 1; xdotool key Return; sleep 2; xdotool getwindowfocus getwindowname; xdotool key Return; sleep 2; xdotool getwindowfocus getwindowname; xdotool keydown alt key y; xdotool keyup alt; sleep 10; xdotool getwindowfocus getwindowname; xdotool keydown alt key o; xdotool keyup alt; sleep 10; xdotool getwindowfocus getwindowname; xdotool keydown alt key o; xdotool keyup alt; sleep 10; xdotool getwindowfocus getwindowname; xdotool keydown alt key n; xdotool keyup alt; sleep 2; xdotool getwindowfocus getwindowname; xdotool keydown alt key o; xdotool keyup alt; sleep 3; xdotool getwindowfocus getwindowname; xdotool mousemove 10 10 click 1; xdotool key Up; xdotool key Return; sleep 2; xdotool getwindowfocus getwindowname; xdotool key Return; sleep 5; xdotool getwindowfocus getwindowname; xdotool keydown alt key f; xdotool keyup alt; xdotool key e; sleep 2; xdotool getwindowfocus getwindowname; xdotool key Return; sleep 5; xwininfo -tree -root; killall kicad || true; rm $HOME/${BOARD_FILE_BASE}.*; zip -r ${BOARD_FILE}_kicad.zip $HOME/$BOARD_FILE_BASE/; rm -rf $HOME/$BOARD_FILE_BASE;);
 
 #after_script:
 after_success:
@@ -141,10 +141,10 @@ after_success:
   - git checkout -b result/pcb ;
   #- git add ${BOARD_FILE}.zip ${BOARD_FILE}.gpi ${BOARD_FILE}.dri ${BOARD_FILE}.txt ${BOARD_FILE}.png
   - git add ${BOARD_FILE}.zip ${BOARD_FILE}.gpi ${BOARD_FILE}.dri ${BOARD_FILE}.txt ${BOARD_FILE}_brd.png ${BOARD_FILE}_sch.png ${BOARD_FILE}_erc.png ${BOARD_FILE}_drc.png ${BOARD_FILE}.png ${BOARD_FILE}_top.png ${BOARD_FILE}_btm.png
-  - git add ${BOARD_FILE}_auto.png        # not always generated
-  - git add ${BOARD_FILE}_all.png         # not always generated
-  - git add $PWD/${BOARD_FILE}_kicad.zip  # eagle to kicad conversion test
-  - git add screenshot_*.png  # debug screenshoots
+  - git add ${BOARD_FILE}_auto.png   # not always generated
+  - git add ${BOARD_FILE}_all.png    # not always generated
+  - git add ${BOARD_FILE}_kicad.zip  # eagle to kicad conversion test
+  #- git add screenshot_*.png  # debug screenshoots
   - git status
   - git config user.email 'travis@travis-ci.org'
   - git config user.name 'Travis CI'
